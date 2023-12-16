@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>🔍Rank Algorithm</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel = "stylesheet" type = "text/css" />
+    </head>
+    <body>
+        <h1>RANK ALGORITHM</h1>
+        <hr>
+        <h2>Description : </h2>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRank Algorithm is to analyse the video based on user experience on the comments of that video. Comments may contain positive as well as negative sentiment based on their view. Although based on likes and views<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp it is easy to analyze the best video based on all the recommended video's but this phenomena fails in most of the cases. For example consider a YouTube channel X having 6 million subscribers for their channel it is easy to<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp get an average of 3 million views within a day irrespective of the video, So based on this the video getting more likes and views can't be the best video in all the recommended video's based on the user experience on that<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp video. Both postive and negative comments play a major role while computing the rank of the video.</p>
+        <hr>
+        <h2>Algorithm : </h2>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 1 &nbsp&nbsp&nbsp&nbsp Start </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 2 &nbsp&nbsp&nbsp&nbspLet pos and neg be the list of postive and negative comments</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 3 &nbsp&nbsp&nbsp&nbspCalculate the percentage of postive comments by pos_perc=length(pos)/length(pos)+length(neg) and negative comments by neg_perc=length(neg)/length(pos)+length(neg)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 4 &nbsp&nbsp&nbsp&nbspCompute the polarity sentiment of each and every comment in pos and neg by </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspfor each comment in pos/neg comments</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCompute comment.polarity for each and every comment and add those value to pos_list/neg_list</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLater calculate the average polarity of positive comments by pos_pol=sum(pos_list)/len(pos_list) and negative comments by neg_pol=sum(neg_list)/len(neg_list)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 5 &nbsp&nbsp&nbsp&nbspCalculate the percentage polarity of postive comments by pos_perc_pol=pos_perc * pos_pol and negative comments by neg_perc_pol=neg_perc * neg_pol </p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 6 &nbsp&nbsp&nbsp&nbspThen compute the average of postive and negative polarity of comments to analyze the video by using pos_res=pos_perc_pol/pos_perc_pol+neg_perc_pol and neg_res=neg_perc_pol/pos_perc_pol+neg_perc_pol</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 7 &nbsp&nbsp&nbsp&nbspBased on pos_res and neg_res ranges we can compute the rank of video</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStep : 8 &nbsp&nbsp&nbsp&nbsp Stop </p>
+        <hr>
+        <h2>Pseudocode : </h2>
+        <h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspConstraints :</h3>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1.&nbsp&nbsp&nbsp&nbspPolarity lies between [-1,1]</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2.&nbsp&nbsp&nbsp&nbspRank lies between [0,1]</p>
+        <h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCode :</h3>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp//RANK ALGORITHM</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAlgorithm&nbsp&nbsp&nbsp&nbsprank_Algo(list_of_comments)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsppos/neg_list=[&nbsp&nbsp]</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspfor&nbsp&nbsp&nbspcomment:=1 to len(list_of_comments) do</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsppos/neg_list.add(comment.polarity)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsppos/neg_comments_pol&nbsp=&nbspsum(pos/neg_list)/len(pos/neg_list)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsppos_perc=len(positive_comments)/len(positive_comments)+len(negative_comments)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspneg_perc=len(negative_comments)/len(positive_comments)+len(negative_comments)</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsppositive_polarity_percentage&nbsp=&nbsppos_comments_pol*pos_perc</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspnegative_polarity_percentage&nbsp=&nbspneg_comments_pol*neg_perc</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsppositive_rank&nbsp=&nbsppositive_polarity_percentage/positive_polarity_percentage+negative_polarity_percentage</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspnegativetive_rank&nbsp=&nbspnegative_polarity_percentage/positive_polarity_percentage+negative_polarity_percentage</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspreturn&nbsp&nbsppositive_rank&nbsp&nbsp(or)&nbsp&nbspnegative_rank</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp}</p>
+        <h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspResults :</h3>
+        <ul>
+            <li>If positive_rank >= 0.9 then RANK = 1</li>
+            <p></p>
+            <li>If positive_rank >= 0.75 and < 0.9 then RANK = 2</li>
+            <p></p>
+            <li>If positive_rank >= 0.50 and < 0.75 then RANK = 3</li>
+            <p></p>
+            <li>If positive_rank >= 0.30 and < 0.50 then RANK = 4</li>
+            <p></p>
+            <li>If positive_rank < 0.30 then RANK = 5</li>
+          </ul>   
+        <hr>
+        <h2>Advantages : </h2>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1.&nbsp&nbspUsed for to analyze is best or not based on user experience.</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2.&nbsp&nbspUsed in youtube recommendation system for to analyze best video.</p>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp3.&nbsp&nbspUsed by youtubers to know about their channel statistice.</p>
+        <h5>Made by MSDRK</h5>
+    </body>
+</html>
